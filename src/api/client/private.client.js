@@ -1,7 +1,7 @@
 import axios from 'axios';
 import queryString from 'query-string';
 
-const baseURL = 'https://7bd3-129-205-124-214.ngrok-free.app/api/v1/';
+const baseURL = 'https://screenplay-2ue4.onrender.com/api/v1/';
 
 const privateClient = axios.create({
   baseURL,
