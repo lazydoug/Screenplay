@@ -70,8 +70,8 @@ const MediaDetail = () => {
             mediaTitle: mediaTitle,
           });
 
-          console.log('TITLE!!! = ' + mediaTitle);
-          console.log('RESPONSE!!! = ' + response);
+          // console.log('TITLE!!! = ' + mediaTitle);
+          // console.log('RESPONSE!!! = ' + response);
 
           setMediaPath(response);
 
@@ -291,9 +291,9 @@ const MediaDetail = () => {
         {/* media video */}
         <div ref={videoRef} style={{ paddingTop: '2rem' }}>
           <Container header='Stream Now'>
-            {/* {user ? ( */}
-            <MediaPlayer src={mediaPath} />
-            {/* ) : (
+            {user ? (
+              <MediaPlayer src={mediaPath} />
+            ) : (
               <Typography
                 variant='h4'
                 fontSize={{ xs: '1rem', md: '1rem', lg: '1.2rem' }}
@@ -313,8 +313,7 @@ const MediaDetail = () => {
                 </Button>
                 {''} to stream this movie!
               </Typography>
-            )
-            } */}
+            )}
           </Container>
         </div>
         {/* media video */}
