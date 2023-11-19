@@ -125,9 +125,9 @@ const ReviewList = () => {
   };
 
   const onRemoved = (id) => {
-    console.log({ reviews });
+    // console.log({ reviews });
     const newReviews = [...reviews].filter(e => e.id !== id);
-    console.log({ newReviews });
+    // console.log({ newReviews });
     setReviews(newReviews);
     setFilteredReviews([...newReviews].splice(0, page * skip));
     setCount(count - 1);

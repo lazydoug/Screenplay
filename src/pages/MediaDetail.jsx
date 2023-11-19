@@ -39,6 +39,7 @@ const MediaDetail = () => {
   const { user, listFavorites } = useSelector((state) => state.user);
 
   const [media, setMedia] = useState();
+  const [mediaPath, setMediaPath] = useState();
   const [isFavorite, setIsFavorite] = useState(false);
   const [onRequest, setOnRequest] = useState(false);
   const [genres, setGenres] = useState([]);
@@ -71,15 +72,19 @@ const MediaDetail = () => {
 
           console.log('TITLE!!! = ' + mediaTitle);
           console.log('RESPONSE!!! = ' + response);
-        }
 
-        if (err) toast.error(err.message);
+          setMediaPath(response);
+
+          if (response) return mediaPath;
+
+          if (err) toast.error(err.message);
+        }
       }
       if (err) toast.error(err.message);
     };
 
     getMedia();
-  }, [mediaType, mediaId, user, dispatch]);
+  }, [mediaType, mediaId, mediaPath, user, dispatch]);
 
   const onFavoriteClick = async () => {
     if (!user) return dispatch(setAuthModalOpen(true));
@@ -132,22 +137,6 @@ const MediaDetail = () => {
       dispatch(removeFavorite(favorite));
       setIsFavorite(false);
       toast.success('Remove favorite success');
-    }
-  };
-
-  const fetchMoviePath = async () => {
-    try {
-      // Make an authenticated request to fetch the movie data
-      const { moviePath } = await mediaApi.getPath({
-        mediaTitle: media.title || media.name,
-      });
-
-      console.log('TITLE!!! = ' + media.title || media.name);
-      console.log('RESPONSE!!! = ' + moviePath);
-
-      // return response;
-    } catch (error) {
-      toast.error('Error fetching movie:', error);
     }
   };
 
@@ -303,7 +292,7 @@ const MediaDetail = () => {
         <div ref={videoRef} style={{ paddingTop: '2rem' }}>
           <Container header='Stream Now'>
             {/* {user ? ( */}
-            <MediaPlayer src={''} />
+            <MediaPlayer src={mediaPath} />
             {/* ) : (
               <Typography
                 variant='h4'
