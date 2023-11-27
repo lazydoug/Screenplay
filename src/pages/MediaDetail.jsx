@@ -33,6 +33,8 @@ import MediaReview from '../components/common/MediaReview';
 
 import MediaPlayer from '../components/common/MediaPlayer';
 
+import Helmet from 'react-helmet';
+
 const MediaDetail = () => {
   const { mediaType, mediaId } = useParams();
 
@@ -142,6 +144,11 @@ const MediaDetail = () => {
 
   return media ? (
     <>
+      <Helmet>
+        <title>Screenplay | {media.title || media.name}</title>
+        <meta name='description' content='App Description' />
+      </Helmet>
+
       <ImageHeader
         imgPath={tmdbConfigs.backdropPath(
           media.backdrop_path || media.poster_path

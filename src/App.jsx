@@ -9,70 +9,81 @@ import MainLayout from './components/layout/MainLayout';
 import PageWrapper from './components/common/PageWrapper';
 
 import 'react-toastify/dist/ReactToastify.css';
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import Helmet from 'react-helmet';
 
 const App = () => {
   const { themeMode } = useSelector((state) => state.themeMode);
 
   return (
-    <ThemeProvider theme={themeConfigs.custom({ mode: themeMode })}>
-      {/* Configure Toastify */}
-      <ToastContainer
-        position='bottom-left'
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        pauseOnFocusLoss
-        pauseOnHover
-        theme={themeMode}
-        style={{ width: 'auto' }}
-      />
+    <>
+      <Helmet>
+        <title>Screenplay</title>
+        <meta
+          name='description'
+          content='Discover a world of cinematic wonders on Screenplay. Stream the latest blockbuster films and timeless classics. Dive into an endless reel of entertainment, from action-packed adventures to heartwarming romances. Unlimited movies, one click away.'
+        />
+      </Helmet>
 
-      <CssBaseline />
+      <ThemeProvider theme={themeConfigs.custom({ mode: themeMode })}>
+        {/* Configure Toastify */}
+        <ToastContainer
+          position='bottom-left'
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          pauseOnFocusLoss
+          pauseOnHover
+          theme={themeMode}
+          style={{ width: 'auto' }}
+        />
 
-      {/* app routes */}
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<MainLayout />}>
-            {routes.map((route, index) =>
-              route.index ? (
-                <Route
-                  index
-                  key={index}
-                  element={
-                    route.state ? (
-                      <PageWrapper state={route.state}>
-                        {route.element}
-                      </PageWrapper>
-                    ) : (
-                      route.element
-                    )
-                  }
-                />
-              ) : (
-                <Route
-                  path={route.path}
-                  key={index}
-                  element={
-                    route.state ? (
-                      <PageWrapper state={route.state}>
-                        {route.element}
-                      </PageWrapper>
-                    ) : (
-                      route.element
-                    )
-                  }
-                />
-              )
-            )}
-          </Route>
-        </Routes>
-      </BrowserRouter>
-      {/* app routes */}
-    </ThemeProvider>
+        <CssBaseline />
+
+        {/* app routes */}
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<MainLayout />}>
+              {routes.map((route, index) =>
+                route.index ? (
+                  <Route
+                    index
+                    key={index}
+                    element={
+                      route.state ? (
+                        <PageWrapper state={route.state}>
+                          {route.element}
+                        </PageWrapper>
+                      ) : (
+                        route.element
+                      )
+                    }
+                  />
+                ) : (
+                  <Route
+                    path={route.path}
+                    key={index}
+                    element={
+                      route.state ? (
+                        <PageWrapper state={route.state}>
+                          {route.element}
+                        </PageWrapper>
+                      ) : (
+                        route.element
+                      )
+                    }
+                  />
+                )
+              )}
+            </Route>
+          </Routes>
+        </BrowserRouter>
+        {/* app routes */}
+      </ThemeProvider>
+    </>
   );
 };
 

@@ -1,15 +1,16 @@
-import DeleteIcon from "@mui/icons-material/Delete";
-import { LoadingButton } from "@mui/lab";
-import { Box, Button, Grid } from "@mui/material";
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { toast } from "react-toastify";
-import MediaItem from "../components/common/MediaItem";
-import Container from "../components/common/Container";
-import uiConfigs from "../configs/ui.configs";
-import favoriteApi from "../api/modules/favorite.api";
-import { setGlobalLoading } from "../redux/features/globalLoadingSlice";
-import { removeFavorite } from "../redux/features/userSlice";
+import DeleteIcon from '@mui/icons-material/Delete';
+import { LoadingButton } from '@mui/lab';
+import { Box, Button, Grid } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import MediaItem from '../components/common/MediaItem';
+import Container from '../components/common/Container';
+import uiConfigs from '../configs/ui.configs';
+import favoriteApi from '../api/modules/favorite.api';
+import { setGlobalLoading } from '../redux/features/globalLoadingSlice';
+import { removeFavorite } from '../redux/features/userSlice';
+import Helmet from 'react-helmet';
 
 const FavoriteItem = ({ media, onRemoved }) => {
   const dispatch = useDispatch();
@@ -19,31 +20,39 @@ const FavoriteItem = ({ media, onRemoved }) => {
   const onRemove = async () => {
     if (onRequest) return;
     setOnRequest(true);
-    const { response, err } = await favoriteApi.remove({ favoriteId: media.id });
+    const { response, err } = await favoriteApi.remove({
+      favoriteId: media.id,
+    });
     setOnRequest(false);
 
     if (err) toast.error(err.message);
     if (response) {
-      toast.success("Remove favorite success");
+      toast.success('Remove favorite success');
       dispatch(removeFavorite({ mediaId: media.mediaId }));
       onRemoved(media.id);
     }
   };
 
-  return (<>
-    <MediaItem media={media} mediaType={media.mediaType} />
-    <LoadingButton
-      fullWidth
-      variant="contained"
-      sx={{ marginTop: 2 }}
-      startIcon={<DeleteIcon />}
-      loadingPosition="start"
-      loading={onRequest}
-      onClick={onRemove}
-    >
-      remove
-    </LoadingButton>
-  </>);
+  return (
+    <>
+      <Helmet>
+        <title>Screenplay | Favorites</title>
+        <meta name='description' content='App Description' />
+      </Helmet>
+
+      <MediaItem media={media} mediaType={media.mediaType} />
+      <LoadingButton
+        fullWidth
+        variant='contained'
+        sx={{ marginTop: 2 }}
+        startIcon={<DeleteIcon />}
+        loadingPosition='start'
+        loading={onRequest}
+        onClick={onRemove}>
+        remove
+      </LoadingButton>
+    </>
+  );
 };
 
 const FavoriteList = () => {
@@ -74,12 +83,15 @@ const FavoriteList = () => {
   }, []);
 
   const onLoadMore = () => {
-    setFilteredMedias([...filteredMedias, ...[...medias].splice(page * skip, skip)]);
+    setFilteredMedias([
+      ...filteredMedias,
+      ...[...medias].splice(page * skip, skip),
+    ]);
     setPage(page + 1);
   };
 
   const onRemoved = (id) => {
-    const newMedias = [...medias].filter(e => e.id !== id);
+    const newMedias = [...medias].filter((e) => e.id !== id);
     setMedias(newMedias);
     setFilteredMedias([...newMedias].splice(0, page * skip));
     setCount(count - 1);
@@ -88,7 +100,7 @@ const FavoriteList = () => {
   return (
     <Box sx={{ ...uiConfigs.style.mainContent }}>
       <Container header={`Your favorites (${count})`}>
-        <Grid container spacing={1} sx={{ marginRight: "-8px!important" }}>
+        <Grid container spacing={1} sx={{ marginRight: '-8px!important' }}>
           {filteredMedias.map((media, index) => (
             <Grid item xs={6} sm={4} md={3} key={index}>
               <FavoriteItem media={media} onRemoved={onRemoved} />

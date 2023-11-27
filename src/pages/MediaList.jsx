@@ -13,6 +13,8 @@ import { setGlobalLoading } from '../redux/features/globalLoadingSlice';
 import { toast } from 'react-toastify';
 import usePrevious from '../hooks/usePrevious';
 
+import Helmet from 'react-helmet';
+
 const MediaList = () => {
   const { mediaType } = useParams();
 
@@ -79,6 +81,14 @@ const MediaList = () => {
 
   return (
     <>
+      <Helmet>
+        <title>
+          Screenplay |{' '}
+          {mediaType === tmdbConfigs.mediaType.movie ? 'Movies' : 'Series'}
+        </title>
+        <meta name='description' content='App Description' />
+      </Helmet>
+
       <HeroSlide
         mediaType={mediaType}
         mediaCategory={mediaCategories[currCategory]}
