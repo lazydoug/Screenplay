@@ -1,7 +1,7 @@
 import axios from 'axios';
 import queryString from 'query-string';
 
-const baseURL = 'https://screenplay-2ue4.onrender.com/api/v1/';
+const baseURL = process.env.REACT_APP_DOMAIN;
 
 const publicClient = axios.create({
   baseURL,
