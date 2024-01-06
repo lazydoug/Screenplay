@@ -36,7 +36,7 @@ const FavoriteItem = ({ media, onRemoved }) => {
   return (
     <>
       <Helmet>
-        <title>Openplay | Favorites</title>
+        <title>Open Play | Favorites</title>
         <meta name='description' content='App Description' />
       </Helmet>
 

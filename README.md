@@ -1,5 +1,5 @@
-# Openplay
-Openplay is a full-stack web application built with the MERN stack (MongoDB, Express.js, React, Node.js) that provides a seamless movie streaming experience inspired by Netflix. This repository houses the source code and development assets for the Openplay project.
+# Open Play
+Open Play is a full-stack web application built with the MERN stack (MongoDB, Express.js, React, Node.js) that provides a seamless movie streaming experience inspired by Netflix. This repository houses the source code and development assets for the Open Play project.
 
 # Key Features:
 - Content Library: Browse a diverse catalogue of videos, including movies, series, and exclusive content.

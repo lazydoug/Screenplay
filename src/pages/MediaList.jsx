@@ -83,7 +83,7 @@ const MediaList = () => {
     <>
       <Helmet>
         <title>
-          Openplay |{' '}
+          Open Play |{' '}
           {mediaType === tmdbConfigs.mediaType.movie ? 'Movies' : 'Series'}
         </title>
         <meta name='description' content='App Description' />

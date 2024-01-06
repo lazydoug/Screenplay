@@ -32,7 +32,7 @@ const ActorDetail = () => {
   return (
     <>
       <Helmet>
-        <title>Openplay | {person.name}</title>
+        <title>Open Play | {person.name}</title>
         <meta name='description' content='App Description' />
       </Helmet>
 
