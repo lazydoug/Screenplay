@@ -20,10 +20,10 @@ const App = () => {
   return (
     <>
       <Helmet>
-        <title>Screenplay</title>
+        <title>Openplay</title>
         <meta
           name='description'
-          content='Discover a world of cinematic wonders on Screenplay. Stream the latest blockbuster films and timeless classics. Dive into an endless reel of entertainment, from action-packed adventures to heartwarming romances. Unlimited movies, one click away.'
+          content='Discover a world of cinematic wonders on Openplay. Stream the latest blockbuster films and timeless classics. Dive into an endless reel of entertainment, from action-packed adventures to heartwarming romances. Unlimited movies, one click away.'
         />
       </Helmet>
 

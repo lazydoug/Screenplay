@@ -145,7 +145,7 @@ const MediaDetail = () => {
   return media ? (
     <>
       <Helmet>
-        <title>Screenplay | {media.title || media.name}</title>
+        <title>Openplay | {media.title || media.name}</title>
         <meta name='description' content='App Description' />
       </Helmet>
 

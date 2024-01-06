@@ -64,7 +64,7 @@ const MediaSearch = () => {
   return (
     <>
       <Helmet>
-        <title>Screenplay | Search</title>
+        <title>Openplay | Search</title>
         <meta name='description' content='App Description' />
       </Helmet>
 
@@ -94,7 +94,7 @@ const MediaSearch = () => {
           </Stack>
           <TextField
             color='success'
-            placeholder='Search Screenplay'
+            placeholder='Search Openplay'
             sx={{ width: '100%' }}
             autoFocus
             onChange={onQueryChange}

@@ -11,7 +11,7 @@ const HomePage = () => {
   return (
     <>
       <Helmet>
-        <title>Screenplay</title>
+        <title>Openplay</title>
         <meta name='description' content='App Description' />
       </Helmet>
 

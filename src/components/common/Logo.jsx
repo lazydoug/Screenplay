@@ -6,7 +6,7 @@ const Logo = () => {
   return (
     <Typography fontWeight='700' fontSize='1.7rem'>
       <Link href='/' underline='none' color='inherit'>
-        Screen<span style={{ color: theme.palette.primary.main }}>Play</span>
+        Open<span style={{ color: theme.palette.primary.main }}>Play</span>
       </Link>
     </Typography>
   );
