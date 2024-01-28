@@ -1,4 +1,4 @@
-import { Container } from '@mui/material';
+import { Container } from '@mui/material'
 
 function MediaPlayer({ src }) {
   return (
@@ -25,6 +25,7 @@ function MediaPlayer({ src }) {
             src={src}
             width='100%'
             height='100%'
+            referrerpolicy='origin'
             allowfullscreen='true'
             allowtransparency='true'
             allow='autoplay'
@@ -42,7 +43,7 @@ function MediaPlayer({ src }) {
         </div>
       </Container>
     </div>
-  );
+  )
 }
 
-export default MediaPlayer;
+export default MediaPlayer
